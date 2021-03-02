@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import br.com.alura.jpa.modelo.Conta;
 import br.com.alura.jpa.modelo.Movimentacao;
@@ -29,17 +29,21 @@ public class TesteJPQL {
 		conta.setId(2L);
 		
 		// Aqui estamos criando a JPQL informando o parametro do tipo conta, por convenção chama-se :pConta
-		String jpql = "select m from Movimentacao m where m.conta = :pConta";
+		// Dessa forma nossa query está mais proxima do mundo da orientaçao a objetos do que do mundo relacional
+		String jpql = "select m from Movimentacao m where m.conta = :pConta order by m.valor desc";
 		
 		// Agora precisamos instanciar uma interface que irá fornecer os métodos para executar a query
-		Query query = em.createQuery(jpql);
+		TypedQuery<Movimentacao> query = em.createQuery(jpql, Movimentacao.class);
+		
 		// Aqui estamos usando um método que encapsula o parametro e sua posição na query
 		query.setParameter("pConta", conta);
+		
 		List<Movimentacao> resultList = query.getResultList();
 
 		// Agora vamos criar um foreach para imprimir cada elemento desta lista
 		for (Movimentacao movimentacao : resultList) {
 			System.out.println("Descrição: " + movimentacao.getDescricao());
+			System.out.println("Valor: " + movimentacao.getValor());
 			System.out.println("Tipo: " + movimentacao.getTipoMovimentacao());
 		}
 	}
