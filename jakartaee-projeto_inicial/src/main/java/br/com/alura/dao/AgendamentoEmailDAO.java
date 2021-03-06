@@ -24,6 +24,7 @@ public class AgendamentoEmailDAO {
 
 //  Como nossa classe é um EJB Stateless não precisamos mais cuidar das configurações da infra
 //	para conexão com o banco de dados
+//	Controlando a transação
 //	public AgendamentoEmailDAO() {
 //		EntityManagerFactory entityManagerFactory = 
 //				Persistence.createEntityManagerFactory("AgendamentoEmailDS");
