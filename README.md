@@ -6,3 +6,5 @@
 ####  Java e JPA: Pesquise com JPQL e Criteria
 ####  EJB: O poder da Java EE - desabilitado
 ####  EJB com Jakarta EE: API Rest com o servidor WildFly
+####  Java JSF I Sua aplicacao web com JSF2
+####  Java JSF 2 II Componentes ricos com Primefaces
