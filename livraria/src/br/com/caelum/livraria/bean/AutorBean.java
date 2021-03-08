@@ -1,5 +1,7 @@
 package br.com.caelum.livraria.bean;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -24,5 +26,15 @@ public class AutorBean {
 		this.autor = new Autor();
 		
 		return "livro?faces-redirect=true";
+	}
+	
+	public List<Autor> getAutores() {
+		return new DAO<Autor>(Autor.class).listaTodos();
+	}
+	
+	public void remover(Autor autor) {
+		System.out.println("Removendo o autor " + this.autor.getNome());
+		
+		new DAO<Autor>(Autor.class).remove(autor);
 	}
 }
