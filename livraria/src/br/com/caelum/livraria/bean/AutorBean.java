@@ -1,7 +1,5 @@
 package br.com.caelum.livraria.bean;
 
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -18,11 +16,13 @@ public class AutorBean {
 		return autor;
 	}
 
-	public void gravar() {
+	public String gravar() {
 		System.out.println("Gravando autor " + this.autor.getNome());
 
 		new DAO<Autor>(Autor.class).adiciona(this.autor);
 		
 		this.autor = new Autor();
+		
+		return "livro?faces-redirect=true";
 	}
 }
