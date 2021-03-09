@@ -14,7 +14,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Livro implements Serializable{
+public class Livro implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -27,7 +28,7 @@ public class Livro implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Calendar dataLancamento = Calendar.getInstance();
 
-	@ManyToMany(fetch=FetchType.EAGER)// Carregamento Lazy, quando se carrega o Livro não se carrega os Autores
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Autor> autores = new ArrayList<Autor>();
 
 	public List<Autor> getAutores() {
@@ -82,7 +83,7 @@ public class Livro implements Serializable{
 	}
 
 	public void removeAutor(Autor autor) {
-		this.autores.remove(autor);
+		this.autores.remove(autor);		
 	}
 
 }
