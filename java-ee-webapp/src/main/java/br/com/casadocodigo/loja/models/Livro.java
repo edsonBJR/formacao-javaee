@@ -26,12 +26,9 @@ public class Livro {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotBlank
 	private String titulo;
 	
 	@Lob
-	@Length(min=10)
-	@NotBlank
 	private String descricao;
 	
 	@DecimalMin("20")
